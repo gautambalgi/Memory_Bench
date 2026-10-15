@@ -6,6 +6,10 @@ MemoryBench starts with a simple question: what did the agent actually do?
 
 Version 0 gives you a tool-using Python agent, a durable execution record, and an interactive Streamlit workbench. Give it a task, inspect each tool call, and see where the time went. This is the foundation for future memory research. It does not yet implement memory retrieval, benchmarks, or evaluation scores.
 
+## What comes next
+
+Next, we will add persistent memory and retrieval, then introduce structured memory, adaptive retrieval, and benchmarks to measure how memory affects agents on longer tasks.
+
 ## Start here
 
 You need Python 3.11 or newer. Python 3.12 is used in the container.
