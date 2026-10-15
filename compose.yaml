@@ -1,0 +1,12 @@
+services:
+  memorybench:
+    build: .
+    ports:
+      - "127.0.0.1:8501:8501"
+    env_file: .env
+    volumes:
+      - memorybench-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  memorybench-data:
