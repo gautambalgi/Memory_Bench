@@ -7,6 +7,8 @@ COPY src ./src
 RUN pip install . && useradd --create-home --uid 10001 memorybench \
     && mkdir -p /app/data && chown -R memorybench:memorybench /app
 COPY app.py ./
+COPY reports ./reports
+COPY scenarios ./scenarios
 COPY .streamlit ./.streamlit
 USER memorybench
 EXPOSE 8501

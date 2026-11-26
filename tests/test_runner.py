@@ -73,14 +73,35 @@ def test_model_error_is_durable(settings):
     ]
 
 
+def test_missing_file_error_keeps_workspace_path_private(settings):
+    provider = ScriptedProvider(
+        [call(name="read_file", arguments='{"path": "missing.txt"}'), ModelTurn(text="Absent.")]
+    )
+    run = execute(settings, provider)
+    error = next(e["data"] for e in run["events"] if e["kind"] == "tool_error")
+    output = json.loads(provider.histories[1][-1]["output"])
+    assert error["error_type"] == "FileNotFoundError"
+    assert output == {"ok": False, "error": error["error"]}
+    assert "No such file" in error["error"]
+    assert str(settings.data_dir) not in error["error"]
+    assert "workspaces" not in error["error"]
+
+
 def test_empty_model_response_fails(settings):
     assert execute(settings, ScriptedProvider([ModelTurn()]))["status"] == "failed"
 
 
 def test_step_limit(settings):
     settings.max_steps = 1
-    run = execute(settings, ScriptedProvider([call()]))
+    provider = ScriptedProvider([call(), ModelTurn(text="Unexpected second turn.")])
+    run = execute(settings, provider)
     assert run["status"] == "limited"
+    assert len(provider.histories) == 1
+    assert [e["kind"] for e in run["events"]][-3:] == [
+        "tool_result",
+        "run_error",
+        "run_finished",
+    ]
 
 
 def test_tool_call_budget_prevents_extra_side_effects(settings):

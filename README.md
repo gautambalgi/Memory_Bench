@@ -8,7 +8,7 @@ Version 0 gives you a tool-using Python agent, a durable execution record, and a
 
 ## What comes next
 
-Next, we will add persistent memory and retrieval, then introduce structured memory, adaptive retrieval, and benchmarks to measure how memory affects agents on longer tasks.
+The Study Assistant offers session-only chat, saved summaries, and retrieved notes. Select **Compare** to see the saved results side by side without making API calls.
 
 ## Start here
 
@@ -54,7 +54,7 @@ streamlit run app.py
 
 Open [localhost:8501](http://localhost:8501). Choose **Guided demo** and select **Run experiment**. The demo calculates a cost, creates a summary file, and reads it back. Its decisions are scripted, but its tools and logs are real. It needs no credentials and does not accept arbitrary tasks.
 
-For your own tasks, put your OpenAI API key in `.env`, set `MB_PROVIDER=openai`, and choose **Live AI**. The model must support Responses API function calling. The configurable starting model is `gpt-4.1-mini`; your account must have access to it. Live requests use your API account and may incur charges. No credentials are needed for the automated tests.
+For your own tasks, open **OpenAI API key** in the sidebar, enter a key, and select **Use key for this session**. It applies to **Live AI** and **Study Assistant**. The app keeps it in the active session. **Clear session key** returns to your local configuration, if configured. You can also set `OPENAI_API_KEY` in `.env`. Live requests are billed to the account that owns the active key. The configured model must support Responses API function calling. Compare, Guided demo, and automated tests need no credentials.
 
 ```dotenv
 MB_PROVIDER=openai
@@ -75,6 +75,18 @@ The live adapter follows the [official function calling guide](https://developer
 - Adjust the model step limit before starting an experiment.
 
 The interface uses a graphite background, warm white text, mint controls, blue model timings, and amber errors. Status messages also use words, so meaning does not depend on color alone.
+
+## Try the Study Assistant
+
+Select **Study Assistant** in the sidebar to practice Python. With an OpenAI API key configured, tell the tutor your level and what you want to practice. For example, ask for a beginner loop exercise and request a hint before the solution.
+
+**Session only** keeps the current conversation in the browser session. Select **New chat** to clear it. **Saved summary** lets you choose a local learner profile. After a successful reply, a separate model call updates that learner's short summary. A new chat starts with a copy of the saved summary. Open **Saved learner summary** to see what the app kept.
+
+The app saves summaries in `data/study-summaries.sqlite3` by default, separate from the run database. The profile picker is for local testing without sign-in. Anyone with access to this app can select a local profile, so use synthetic learner details for shared demos. Select **Run dashboard** to return to the original workbench.
+
+**Retrieved notes** uses the same learner profiles and has its own notes. It matches keywords in the current question to note categories such as exam date or practice topic. Expand **Notes used in the last reply** to see which facts were sent to the tutor. The app updates notes after a successful reply. Notes and summaries are stored separately in the same database.
+
+The [Study Assistant scenarios](scenarios/README.md) define the exact messages and scoring rules for comparing memory approaches.
 
 ## Run from a terminal
 

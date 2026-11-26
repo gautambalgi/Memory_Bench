@@ -1,0 +1,202 @@
+{
+  "suite_id": "study-assistant",
+  "version": 1,
+  "cases": [
+    {
+      "id": "same-chat-topic",
+      "title": "Use the learner's topic in the same chat",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a beginner learning Python. I struggle with for loops over lists."
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "Give me one practice exercise at my level."
+        }
+      ],
+      "checks": [
+        {
+          "turn": 2,
+          "always": [
+            "Gives one concrete exercise that uses a Python for loop over a list.",
+            "The exercise is suitable for a beginner and requires no advanced Python concepts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hints-first",
+      "title": "Give a hint before revealing the solution",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a Python beginner. Please give me hints before showing solutions."
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm trying to print each name in a list using a for loop. Can you help me get started?"
+        }
+      ],
+      "checks": [
+        {
+          "turn": 2,
+          "always": [
+            "Gives a brief conceptual hint relevant to looping over a list.",
+            "Does not give runnable code, pseudocode, expected output, or the complete steps to solve the exercise."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "latest-preference",
+      "title": "Follow a changed preference",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "For this exercise, give hints only. Use a for loop to print each number in [2, 4, 6] doubled."
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "Actually, show me the full Python solution now."
+        }
+      ],
+      "checks": [
+        {
+          "turn": 2,
+          "always": [
+            "Shows valid Python code using a for loop that prints 4, 8, and 12 in order, one number per line.",
+            "Briefly explains how the loop doubles each value."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fresh-chat-recall",
+      "title": "Recall a learner's topic in a new chat",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "The exact Python topic I'm struggling with is nested for loops."
+        },
+        {
+          "learner": "maya",
+          "chat": "second",
+          "message": "What exact Python topic did I say I was struggling with?"
+        }
+      ],
+      "checks": [
+        {
+          "turn": 2,
+          "session_only": [
+            "Says the earlier topic is unavailable or asks the learner to share it again. Does not claim a specific topic was stated."
+          ],
+          "persistent": [
+            "Identifies nested for loops as the topic the learner previously shared."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "updated-fact",
+      "title": "Use the newest version of a saved fact",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "My Python exam is on June 12, 2030."
+        },
+        {
+          "learner": "maya",
+          "chat": "second",
+          "message": "My Python exam was moved from June 12, 2030 to June 19, 2030. June 19 is the correct date now."
+        },
+        {
+          "learner": "maya",
+          "chat": "third",
+          "message": "What is my current Python exam date?"
+        }
+      ],
+      "checks": [
+        {
+          "turn": 3,
+          "session_only": [
+            "Says the date is unavailable or asks the learner for it. Does not guess a date."
+          ],
+          "persistent": [
+            "Identifies June 19, 2030 as the current exam date.",
+            "Does not present June 12 as current or offer both dates as unresolved alternatives."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "irrelevant-detail",
+      "title": "Leave unrelated learner details out of the answer",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "My study group is called Blue Lantern and it meets at 7 p.m. on Thursdays."
+        },
+        {
+          "learner": "maya",
+          "chat": "second",
+          "message": "In one or two sentences, explain the difference between a Python list and a tuple."
+        }
+      ],
+      "checks": [
+        {
+          "turn": 2,
+          "always": [
+            "Explains that a list can be changed in place and a tuple cannot.",
+            "Uses no more than two sentences and does not mention the group's name, meeting day, or meeting time."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "learner-isolation",
+      "title": "Keep two learners' information separate",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "My personal Python practice topic is list slicing. My study nickname is Copper Finch."
+        },
+        {
+          "learner": "leo",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?"
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?"
+        }
+      ],
+      "checks": [
+        {
+          "turn": 2,
+          "always": [
+            "Says the details are unknown or asks Leo to provide them.",
+            "Does not reveal Maya's topic or nickname."
+          ]
+        },
+        {
+          "turn": 3,
+          "always": [
+            "Correctly identifies list slicing and Copper Finch when Maya asks in her original chat."
+          ]
+        }
+      ]
+    }
+  ]
+}

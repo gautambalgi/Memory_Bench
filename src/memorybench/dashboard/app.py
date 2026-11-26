@@ -6,17 +6,21 @@ import sqlite3
 
 import plotly.graph_objects as go
 import streamlit as st
-from pydantic import ValidationError
+from pydantic import SecretStr, ValidationError
 
 from memorybench.agent.providers import create_provider
 from memorybench.agent.runner import AgentRunner
 from memorybench.config import Settings
+from memorybench.dashboard.compare import render_comparison
+from memorybench.dashboard.study import render_study_assistant
 from memorybench.dashboard.style import CSS
+from memorybench.dashboard.text import display_text
 from memorybench.samples import DEMO_TASK, SAMPLE_TASKS
 from memorybench.tracing.store import RunStore
 
 
 def inspect_run(run: dict):
+    run = display_text(run)
     events = run["events"]
     st.markdown('<div class="eyebrow">02 / RUN OBSERVATORY</div>', unsafe_allow_html=True)
     st.subheader("Follow the work, step by step.")
@@ -151,16 +155,51 @@ def main():
     except ValidationError:
         st.error("Some settings are invalid. Check .env against the ranges in .env.example.")
         st.stop()
+    with st.sidebar:
+        st.markdown('<div class="lab-mark">MB / 00</div>', unsafe_allow_html=True)
+        st.title("MemoryBench")
+        settings = sidebar_api_key(settings)
+        view = st.radio("Views", ["Run dashboard", "Study Assistant", "Compare"])
+        st.divider()
+    if view == "Study Assistant":
+        render_study_assistant(settings)
+    elif view == "Compare":
+        render_comparison()
+    else:
+        render_run_dashboard(settings)
+
+
+def sidebar_api_key(settings: Settings) -> Settings:
+    with st.expander("OpenAI API key"):
+        with st.form("sidebar_api_key", clear_on_submit=True):
+            key = st.text_input("OpenAI API key", type="password", max_chars=512)
+            submitted = st.form_submit_button("Use key for this session")
+        if submitted and key.strip():
+            st.session_state["openai_session_key"] = SecretStr(key.strip())
+        elif submitted:
+            st.info("Enter an API key to use it for this session.")
+        if "openai_session_key" in st.session_state:
+            if st.button("Clear session key"):
+                del st.session_state["openai_session_key"]
+            else:
+                st.caption("Using the key you entered for this session.")
+        session_key = st.session_state.get("openai_session_key")
+        if session_key is not None:
+            return settings.model_copy(update={"api_key": session_key})
+        if settings.api_key.get_secret_value().strip():
+            st.caption("Using the key in your local configuration.")
+        else:
+            st.caption("Add a key for live requests. Compare and Guided demo work without one.")
+    return settings
+
+
+def render_run_dashboard(settings: Settings):
     try:
         store = RunStore(settings.data_dir, (settings.api_key.get_secret_value(),))
     except (OSError, sqlite3.Error):
         st.error("The data directory is not writable. Check MB_DATA_DIR and folder permissions.")
         st.stop()
     with st.sidebar:
-        st.markdown('<div class="lab-mark">MB / 00</div>', unsafe_allow_html=True)
-        st.title("MemoryBench")
-        st.caption("An open notebook for agent behavior.")
-        st.divider()
         st.markdown("**Your workbench**")
         mode = st.radio(
             "Execution mode",
@@ -170,14 +209,17 @@ def main():
         if mode == "Guided demo":
             st.caption("A scripted sample with real tool execution. No API key needed.")
         else:
-            st.caption(f"Model: {settings.model}. Credentials are read from your environment.")
+            st.caption(f"Model: {settings.model}")
         steps = st.slider("Model step limit", 1, 50, settings.max_steps)
         st.caption(f"Run deadline: {settings.run_timeout_seconds:g} seconds")
         st.divider()
         st.markdown("**Recent runs**")
         recent = store.recent()
         options = ["New run"] + [r["id"] for r in recent]
-        labels = {r["id"]: f"{r['status']} / {r['task'][:38]}" for r in recent}
+        labels = {
+            r["id"]: f"{r['id'][:12]} / {r['status']} / {display_text(r['task'])[:38]}"
+            for r in recent
+        }
         active = st.session_state.get("active_run", "New run")
         chosen = st.selectbox(
             "Open a run",
@@ -219,7 +261,7 @@ def main():
             st.caption("This fixed sample calculates a cost, saves a file, and reads it back.")
         ready = demo or bool(settings.api_key.get_secret_value().strip())
         if not ready:
-            st.info("Add OPENAI_API_KEY to .env, then refresh to enable Live AI.")
+            st.info("Add an OpenAI API key in the sidebar to enable Live AI.")
         start = st.button(
             "Run experiment",
             type="primary",

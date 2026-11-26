@@ -18,10 +18,11 @@ You have no persistent memory. Do not claim to remember earlier runs."""
 
 
 class OpenAIProvider:
-    def __init__(self, settings: Settings):
+    def __init__(self, settings: Settings, *, instructions: str = SYSTEM_PROMPT):
         if not settings.api_key.get_secret_value().strip():
             raise ValueError("Add OPENAI_API_KEY to .env before starting a live run.")
         self.settings = settings
+        self.instructions = instructions
 
     async def respond(self, history: list[dict], tools: list[dict]) -> ModelTurn:
         async with AsyncOpenAI(
@@ -31,7 +32,7 @@ class OpenAIProvider:
         ) as client:
             response = await client.responses.create(
                 model=self.settings.model,
-                instructions=SYSTEM_PROMPT,
+                instructions=self.instructions,
                 input=history,
                 tools=tools,
                 parallel_tool_calls=False,

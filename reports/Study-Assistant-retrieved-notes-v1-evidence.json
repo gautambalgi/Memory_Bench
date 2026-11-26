@@ -1,0 +1,556 @@
+{
+  "mode": "retrieved_notes",
+  "model": "gpt-5-nano",
+  "suite_version": 1,
+  "cases": [
+    {
+      "id": "same-chat-topic",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a beginner learning Python. I struggle with for loops over lists.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 326,
+              "output_tokens": 1578,
+              "cached_input_tokens": 0,
+              "seconds": 9.0664
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 129,
+              "output_tokens": 721,
+              "cached_input_tokens": 0,
+              "seconds": 3.6773
+            }
+          ],
+          "wall_seconds": 13.2786,
+          "reply": "Nice to meet you! I\u2019ll help you with for loops over lists. Here\u2019s the core idea in plain language:\n\n- A for loop goes through the items of a list one by one.\n- On each pass, the loop variable holds the current item from the list.\n- Inside the loop you can do something with that item, like print it or accumulate results.\n\nHint for your practice: Think about what the loop variable represents on each pass.\n\nExercise:\n- Given the list colors = ['red', 'green', 'blue'], write a for loop that prints each color.",
+          "notes_after": {
+            "level": "beginner",
+            "practice_topic": "for loops over lists in Python"
+          }
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "Give me one practice exercise at my level.",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {
+                "level": "beginner",
+                "practice_topic": "for loops over lists in Python"
+              },
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 478,
+              "output_tokens": 1226,
+              "cached_input_tokens": 0,
+              "seconds": 6.1958
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 124,
+              "output_tokens": 375,
+              "cached_input_tokens": 0,
+              "seconds": 2.298
+            }
+          ],
+          "wall_seconds": 8.8913,
+          "reply": "Great, one practice exercise for you:\n\nExercise:\n- Let animals = ['cat', 'dog', 'bird']. Write a for loop that prints each animal.\n\nHint:\n- Think about what the loop variable represents on each pass through the list.",
+          "notes_after": {
+            "level": "beginner",
+            "practice_topic": "for loops over lists in Python"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hints-first",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a Python beginner. Please give me hints before showing solutions.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 325,
+              "output_tokens": 1362,
+              "cached_input_tokens": 0,
+              "seconds": 6.6443
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 128,
+              "output_tokens": 1381,
+              "cached_input_tokens": 0,
+              "seconds": 5.7404
+            }
+          ],
+          "wall_seconds": 12.7866,
+          "reply": "Nice to meet you! You\u2019re a Python beginner, and I\u2019ll give hints first.\n\nExercise:\n- Given a list of numbers [2, 4, 6, 8], write a loop that prints each number.\n\nHint:\n- Think about what the loop variable represents on each pass through the list.\n\nWould you like the full solution now, or another hint first?",
+          "notes_after": {
+            "help_preference": "hints before solutions",
+            "level": "beginner",
+            "practice_topic": "Python"
+          }
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm trying to print each name in a list using a for loop. Can you help me get started?",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 432,
+              "output_tokens": 1130,
+              "cached_input_tokens": 0,
+              "seconds": 5.6245
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 136,
+              "output_tokens": 265,
+              "cached_input_tokens": 0,
+              "seconds": 2.0071
+            }
+          ],
+          "wall_seconds": 8.0225,
+          "reply": "Great start. Here\u2019s a simple exercise and one hint.\n\nExercise:\n- You have a list of names. Write a for loop to print each name.\n\nHint:\n- Think about what the loop variable represents on each pass through the list.\n\nWould you like the full solution now, or another hint first?",
+          "notes_after": {
+            "help_preference": "hints before solutions",
+            "level": "beginner",
+            "practice_topic": "Python"
+          }
+        }
+      ]
+    },
+    {
+      "id": "latest-preference",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "For this exercise, give hints only. Use a for loop to print each number in [2, 4, 6] doubled.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 340,
+              "output_tokens": 512,
+              "cached_input_tokens": 0,
+              "seconds": 3.0035
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 143,
+              "output_tokens": 270,
+              "cached_input_tokens": 0,
+              "seconds": 1.7926
+            }
+          ],
+          "wall_seconds": 5.187,
+          "reply": "Hint: Use a for loop to take each element from the list in order, then print the result of doubling that element.",
+          "notes_after": {}
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "Actually, show me the full Python solution now.",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 385,
+              "output_tokens": 880,
+              "cached_input_tokens": 0,
+              "seconds": 4.4154
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 125,
+              "output_tokens": 253,
+              "cached_input_tokens": 0,
+              "seconds": 1.5732
+            }
+          ],
+          "wall_seconds": 6.3973,
+          "reply": "Here\u2019s the full Python solution:\n\nfor n in [2, 4, 6]:\n    print(n * 2)\n\nKey lines explained:\n- The for loop goes through each element in the list [2, 4, 6], assigning it to n on each iteration.\n- n * 2 doubles the current number.\n- print outputs the doubled value.",
+          "notes_after": {}
+        }
+      ]
+    },
+    {
+      "id": "fresh-chat-recall",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "The exact Python topic I'm struggling with is nested for loops.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "incomplete",
+              "input_tokens": 324,
+              "output_tokens": 1984,
+              "cached_input_tokens": 0,
+              "seconds": 8.8882
+            }
+          ],
+          "wall_seconds": 9.0839,
+          "error": "The model did not return a reply.",
+          "notes_after": {}
+        },
+        {
+          "learner": "maya",
+          "chat": "second",
+          "message": "What exact Python topic did I say I was struggling with?",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 324,
+              "output_tokens": 1160,
+              "cached_input_tokens": 0,
+              "seconds": 5.8945
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 127,
+              "output_tokens": 293,
+              "cached_input_tokens": 0,
+              "seconds": 1.7223
+            }
+          ],
+          "wall_seconds": 8.0081,
+          "reply": "I don\u2019t see any notes about a specific Python topic you\u2019re struggling with\u2014the retrieved_learner_notes are empty. Could you tell me which topic you want to work on, or describe the struggle? If you\u2019re unsure, I can give a quick diagnostic to identify gaps. Also, let me know your current level (beginner, intermediate, etc.) and whether you prefer hints-first style.",
+          "notes_after": {}
+        }
+      ]
+    },
+    {
+      "id": "updated-fact",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "My Python exam is on June 12, 2030.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 325,
+              "output_tokens": 1195,
+              "cached_input_tokens": 0,
+              "seconds": 6.1312
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 128,
+              "output_tokens": 633,
+              "cached_input_tokens": 0,
+              "seconds": 2.9504
+            }
+          ],
+          "wall_seconds": 9.4925,
+          "reply": "Nice\u2014planning ahead for a Python exam on June 12, 2030. I can tailor the plan once I know a bit more about you.\n\nPlease tell me:\n- Your current Python level (beginner, some experience, comfortable with basics).\n- Which topics you want to review or feel shaky on.\n- How many days per week you can study and how long per session.\n- Do you prefer a structured daily micro-lesson approach or longer, focused practice sessions?\n\nIf you\u2019d like, I can propose a 6-week plan that covers basics, data structures, functions and modules, classes, file I/O and exceptions, and practice tests, with short practice exercises you can try. We can add one short hint per exercise.\n\nWould you like me to:\n- start with a quick self-check to gauge your current level, or\n- jump straight into a tailored study plan?",
+          "notes_after": {
+            "exam_date": "June 12, 2030",
+            "practice_topic": "Python"
+          }
+        },
+        {
+          "learner": "maya",
+          "chat": "second",
+          "message": "My Python exam was moved from June 12, 2030 to June 19, 2030. June 19 is the correct date now.",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {
+                "exam_date": "June 12, 2030"
+              },
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 354,
+              "output_tokens": 888,
+              "cached_input_tokens": 0,
+              "seconds": 4.4981
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 146,
+              "output_tokens": 1289,
+              "cached_input_tokens": 0,
+              "seconds": 5.2072
+            }
+          ],
+          "wall_seconds": 10.1035,
+          "reply": "Thanks for the date update. Your exam is now on June 19.\n\nWould you like a quick warm-up exercise to practice Python? You can choose a topic:\n- Basic variables and operations\n- Loops and lists\n- Simple functions\n\nOr tell me another topic you want to practice. If you want hints-first, I\u2019ll give you an exercise with one short hint.",
+          "notes_after": {
+            "exam_date": "June 19, 2030",
+            "practice_topic": "Python"
+          }
+        },
+        {
+          "learner": "maya",
+          "chat": "third",
+          "message": "What is my current Python exam date?",
+          "turn": 3,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {
+                "exam_date": "June 19, 2030"
+              },
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 331,
+              "output_tokens": 471,
+              "cached_input_tokens": 0,
+              "seconds": 2.6433
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 123,
+              "output_tokens": 329,
+              "cached_input_tokens": 0,
+              "seconds": 1.7125
+            }
+          ],
+          "wall_seconds": 4.7209,
+          "reply": "Your current Python exam date is June 19, 2030.",
+          "notes_after": {
+            "exam_date": "June 19, 2030",
+            "practice_topic": "Python"
+          }
+        }
+      ]
+    },
+    {
+      "id": "irrelevant-detail",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "My study group is called Blue Lantern and it meets at 7 p.m. on Thursdays.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 331,
+              "output_tokens": 1297,
+              "cached_input_tokens": 0,
+              "seconds": 6.0801
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 134,
+              "output_tokens": 535,
+              "cached_input_tokens": 0,
+              "seconds": 2.7227
+            }
+          ],
+          "wall_seconds": 9.2478,
+          "reply": "Nice to know. Blue Lantern meets at 7 p.m. on Thursdays.\n\nWhat would you like to do next? I can:\n- give you a short Python exercise about storing that meeting info (name, day, time) in a dictionary,\n- or help with something else you have in mind (like computing the next meeting time, or practicing lists and loops).\n\nIf you want, tell me your Python level (beginner, intermediate) and I\u2019ll tailor the exercise.",
+          "notes_after": {
+            "study_group": "Blue Lantern"
+          }
+        },
+        {
+          "learner": "maya",
+          "chat": "second",
+          "message": "In one or two sentences, explain the difference between a Python list and a tuple.",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 329,
+              "output_tokens": 580,
+              "cached_input_tokens": 0,
+              "seconds": 3.1363
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 132,
+              "output_tokens": 248,
+              "cached_input_tokens": 0,
+              "seconds": 1.4343
+            }
+          ],
+          "wall_seconds": 4.9502,
+          "reply": "Lists are mutable sequences, so you can change, add, or remove elements after you create them. Tuples are immutable, meaning once created you can\u2019t modify their contents; they\u2019re often used for fixed collections and can be used as dictionary keys if their elements are hashable.",
+          "notes_after": {
+            "study_group": "Blue Lantern"
+          }
+        }
+      ]
+    },
+    {
+      "id": "learner-isolation",
+      "turns": [
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "My personal Python practice topic is list slicing. My study nickname is Copper Finch.",
+          "turn": 1,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 328,
+              "output_tokens": 1828,
+              "cached_input_tokens": 0,
+              "seconds": 8.7683
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 131,
+              "output_tokens": 416,
+              "cached_input_tokens": 0,
+              "seconds": 2.1272
+            }
+          ],
+          "wall_seconds": 11.3279,
+          "reply": "Nice to meet you, Copper Finch. We\u2019ll focus on list slicing.\n\nExercise:\nYou have a list of eight items: a, b, c, d, e, f, g, h. Write a slice expression to extract the middle four items.\n\nHint:\nThink about how Python slices use start:stop, and remember that the stop index is not included.",
+          "notes_after": {
+            "nickname": "Copper Finch",
+            "practice_topic": "list slicing"
+          }
+        },
+        {
+          "learner": "leo",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?",
+          "turn": 2,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {},
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 323,
+              "output_tokens": 946,
+              "cached_input_tokens": 0,
+              "seconds": 4.8138
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 126,
+              "output_tokens": 269,
+              "cached_input_tokens": 0,
+              "seconds": 1.5611
+            }
+          ],
+          "wall_seconds": 6.8079,
+          "reply": "I don\u2019t see a saved personal Python practice topic or study nickname yet. Do you want me to pick them for you or would you prefer to choose?\n\nIf you want a quick start, here are some options:\n- Topic: A) Python basics (variables, loops, functions) B) Data structures (lists, dicts, tuples, sets) C) Small projects (text adventures) D) Debugging and testing\n- Nickname: A) CodeJet B) PyNavigator C) ByteSculptor\n\nTell me which pair you like, or share your own ideas.",
+          "notes_after": {}
+        },
+        {
+          "learner": "maya",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?",
+          "turn": 3,
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "notes_supplied": {
+                "nickname": "Copper Finch",
+                "practice_topic": "list slicing"
+              },
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 436,
+              "output_tokens": 455,
+              "cached_input_tokens": 0,
+              "seconds": 2.5943
+            },
+            {
+              "purpose": "note_update",
+              "model": "gpt-5-nano-2025-08-07",
+              "status": "completed",
+              "input_tokens": 126,
+              "output_tokens": 267,
+              "cached_input_tokens": 0,
+              "seconds": 1.48
+            }
+          ],
+          "wall_seconds": 4.4756,
+          "reply": "Your personal practice topic is list slicing, and your study nickname is Copper Finch. Would you like another slice exercise or a quick hint?",
+          "notes_after": {
+            "nickname": "Copper Finch",
+            "practice_topic": "list slicing"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "suite": "study-assistant",
+  "version": 1,
+  "mode": "session_only",
+  "timestamp": "2026-11-24T21:18:55-05:00",
+  "model": "gpt-5-nano",
+  "dataset_sha256": "ae59992ffdc29773f309e5b7f96f1e9a018fa6bce029d7eebeffa4795dd348db",
+  "instructions_sha256": "54e444c42fcf153bc29e1277186bc3af5aee58f4bb566285ef39a7325c8cf076",
+  "settings": {
+    "max_output_tokens": 2000,
+    "model_timeout_seconds": 60.0,
+    "run_timeout_seconds": 180.0
+  },
+  "cases": [
+    {
+      "id": "same-chat-topic",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a beginner learning Python. I struggle with for loops over lists.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 269,
+                "output_tokens": 1378,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1216
+              },
+              "api_seconds": 11.0635
+            }
+          ],
+          "wall_seconds": 11.3851,
+          "reply": "Nice to meet you. Since you\u2019re a beginner, we\u2019ll keep hints first.\n\nA quick concept: in a for loop over a list, the loop variable takes on each item from the list, one by one, in order.\n\nExercise:\n- Given a list named numbers, write a for loop that creates a new list called doubles where each entry is the corresponding number doubled.\n\nHint:\n- Start with an empty list and add each processed item to it as you iterate."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "first",
+          "message": "Give me one practice exercise at my level.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 3,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 383,
+                "output_tokens": 1140,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1024
+              },
+              "api_seconds": 7.3784
+            }
+          ],
+          "wall_seconds": 7.6533,
+          "reply": "Great. Here\u2019s one more practice exercise at your level.\n\nExercise:\n- Given a list named words, write a for loop that creates a new list called lengths where each entry is the number of characters in the corresponding word.\n\nHint:\n- Think about using len to get each word\u2019s length, and append that value to lengths as you go."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "One beginner exercise loops over a list of words."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "hints-first",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a Python beginner. Please give me hints before showing solutions.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 268,
+                "output_tokens": 1320,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1152
+              },
+              "api_seconds": 8.9675
+            }
+          ],
+          "wall_seconds": 9.1649,
+          "reply": "Nice to meet you! I see you want hints first. Here\u2019s a beginner-friendly exercise:\n\nExercise: Write a small program that goes through a list of items and prints each item on its own line. \n\nHint: Think about the loop variable on each pass\u2014it holds the current item from the list.\n\nWhen you\u2019re ready for the solution, just say \u201cshow me the solution,\u201d and I\u2019ll explain the key parts briefly. If you\u2019d like a different exercise, tell me your preference."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm trying to print each name in a list using a for loop. Can you help me get started?",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 3,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 398,
+                "output_tokens": 1415,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1280
+              },
+              "api_seconds": 10.227
+            }
+          ],
+          "wall_seconds": 10.4273,
+          "reply": "Nice to meet you! Since you\u2019re a Python beginner and you want hints first, here\u2019s a quick hint to get you started:\n\nHint: On each pass of a for loop, the loop variable is one item from your list. If your list contains names, that variable will be a single name at a time, and you can display it when you need. \n\nWould you like to try a tiny exercise to practice this, or should I wait for you to ask for the full solution? If you want a different exercise, tell me your preference."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "One conceptual hint explains what the loop variable represents, with no code or expected output."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "latest-preference",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "For this exercise, give hints only. Use a for loop to print each number in [2, 4, 6] doubled.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 283,
+                "output_tokens": 933,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 896
+              },
+              "api_seconds": 6.5203
+            }
+          ],
+          "wall_seconds": 6.7394,
+          "reply": "Hint: In the for loop, the loop variable is each element from the list in turn; print that variable multiplied by 2."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "first",
+          "message": "Actually, show me the full Python solution now.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 3,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 330,
+                "output_tokens": 1031,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 896
+              },
+              "api_seconds": 7.3068
+            }
+          ],
+          "wall_seconds": 7.4991,
+          "reply": "Here\u2019s the full Python solution:\n\nfor num in [2, 4, 6]:\n    print(num * 2)\n\nExplanation:\n- The for loop goes through each number in the list and assigns it to num.\n- print(num * 2) outputs the doubled value for each number (4, 8, 12)."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "The complete loop prints 4, 8, and 12 in order and explains the doubling."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "fresh-chat-recall",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "The exact Python topic I'm struggling with is nested for loops.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 267,
+                "output_tokens": 754,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 640
+              },
+              "api_seconds": 5.4891
+            }
+          ],
+          "wall_seconds": 5.7062,
+          "reply": "Nice, nested for loops are a common sticking point but a great one to master.\n\nTo tailor practice, tell me:\n- Your current Python level (beginner, intermediate, etc.)\n- Your learning preference (hints first, or you want full solutions when asked)\n\nIf you\u2019re ready, I can also propose a small exercise right away once you share that."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "second",
+          "message": "What exact Python topic did I say I was struggling with?",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 267,
+                "output_tokens": 656,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 576
+              },
+              "api_seconds": 4.4503
+            }
+          ],
+          "wall_seconds": 4.6465,
+          "reply": "I can\u2019t see any earlier messages in this chat, so I don\u2019t know what topic you mentioned. Please tell me which Python topic you said you were struggling with (e.g., lists, loops, functions, dictionaries). If you want, share your level and whether you prefer hints-first guidance."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "It said the earlier topic was unavailable and asked for it again without claiming a specific topic."
+        }
+      ],
+      "verdict": "PASS",
+      "cross_chat_recall": "no recall"
+    },
+    {
+      "id": "updated-fact",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "My Python exam is on June 12, 2030.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 268,
+                "output_tokens": 1077,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 896
+              },
+              "api_seconds": 6.5737
+            }
+          ],
+          "wall_seconds": 6.7701,
+          "reply": "Nice to know your exam date.\n\nCould you share a couple of quick details so I tailor things for you?\n- What\u2019s your current Python level (beginner, intermediate, advanced)?\n- Which topics do you want to focus on first ( basics, loops, functions, data structures, OOP, file I/O, errors, libraries, debugging, etc.)?\n- How much time do you have to study each day or week?\n- Do you prefer short, hint-first exercises, or longer problems?\n\nIf you\u2019d like, I can start right away with a tiny practice question on a topic you name, and I\u2019ll give one brief hint."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "second",
+          "message": "My Python exam was moved from June 12, 2030 to June 19, 2030. June 19 is the correct date now.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 286,
+                "output_tokens": 1069,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 960
+              },
+              "api_seconds": 8.426
+            }
+          ],
+          "wall_seconds": 8.6517,
+          "reply": "Got it. The exam date is now June 19.\n\nWould you like me to help with a quick practice task, or a short study plan until then? If you want a task, tell me your current level (beginner or intermediate) and which topics you want to focus on (loops, lists, functions, dictionaries, etc.). If you\u2019re unsure, I can pick a general beginner task to start with. What would you prefer?"
+        },
+        {
+          "turn": 3,
+          "learner": "maya",
+          "chat": "third",
+          "message": "What is my current Python exam date?",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 263,
+                "output_tokens": 852,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 704
+              },
+              "api_seconds": 6.0684
+            }
+          ],
+          "wall_seconds": 6.4182,
+          "reply": "I don\u2019t have access to your personal schedule, so I can\u2019t see your exam date. If you tell me where it\u2019s usually posted (syllabus, course calendar in your LMS like Canvas/Blackboard, or you got an email), I can help you locate it or remind you how to set up a check.\n\nIf you\u2019d like, I can also show you a quick way to track deadlines in Python or with a simple reminder method. Would you prefer help finding it now or setting up a reminder?"
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 3,
+          "verdict": "PASS",
+          "reason": "It said the exam date was unavailable in the fresh chat and did not guess."
+        }
+      ],
+      "verdict": "PASS",
+      "cross_chat_recall": "no recall"
+    },
+    {
+      "id": "irrelevant-detail",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "My study group is called Blue Lantern and it meets at 7 p.m. on Thursdays.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 274,
+                "output_tokens": 1562,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1472
+              },
+              "api_seconds": 11.1997
+            }
+          ],
+          "wall_seconds": 11.4165,
+          "reply": "Nice to know: Blue Lantern meets at 7 p.m. on Thursdays.\n\nWhat Python topic would you like to practice today? If you\u2019re unsure, I can suggest a beginner-friendly exercise that uses your group info (name, day, time) to print a friendly message. I\u2019ll give at most one short hint with the exercise."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "second",
+          "message": "In one or two sentences, explain the difference between a Python list and a tuple.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 272,
+                "output_tokens": 487,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 384
+              },
+              "api_seconds": 3.5692
+            }
+          ],
+          "wall_seconds": 3.7797,
+          "reply": "Lists are mutable sequences created with []\u2014you can change, add, or remove items. Tuples are immutable sequences created with ()\u2014once created, their contents can\u2019t be changed, and they\u2019re often used for fixed collections or as dictionary keys."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Two sentences explain lists and tuples without mentioning the unrelated study group or its schedule."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "learner-isolation",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "My personal Python practice topic is list slicing. My study nickname is Copper Finch.",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 271,
+                "output_tokens": 1037,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 960
+              },
+              "api_seconds": 6.5167
+            }
+          ],
+          "wall_seconds": 6.7089,
+          "reply": "Nice to meet you, Copper Finch. Your focus is list slicing. I\u2019ll tailor hints-first exercises for that topic. Tell me your Python level (beginner or intermediate) and how you\u2019d like to proceed: quick concept refresher or jump into an exercise."
+        },
+        {
+          "turn": 2,
+          "learner": "leo",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 266,
+                "output_tokens": 689,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 576
+              },
+              "api_seconds": 4.3319
+            }
+          ],
+          "wall_seconds": 4.5491,
+          "reply": "I can\u2019t see your previous messages, so I don\u2019t know your personal Python practice topic or study nickname. Please share them, or tell me your level and preferences and I can suggest a topic and a nickname to match. If you\u2019d like, I can also help you choose both."
+        },
+        {
+          "turn": 3,
+          "learner": "maya",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?",
+          "calls": [
+            {
+              "request_model": "gpt-5-nano",
+              "history_messages": 3,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 345,
+                "output_tokens": 623,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 512
+              },
+              "api_seconds": 4.3751
+            }
+          ],
+          "wall_seconds": 4.6162,
+          "reply": "Copper Finch, your personal Python practice topic is list slicing, and your study nickname is Copper Finch. How would you like to proceed: a quick concept refresher or a hints-first exercise? Also, what\u2019s your Python level\u2014beginner or intermediate?"
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Leo was asked to share his details, and Maya's topic and nickname were not disclosed."
+        },
+        {
+          "turn": 3,
+          "verdict": "PASS",
+          "reason": "Maya received the correct topic, list slicing, and the correct nickname, Copper Finch."
+        }
+      ],
+      "verdict": "PASS"
+    }
+  ]
+}

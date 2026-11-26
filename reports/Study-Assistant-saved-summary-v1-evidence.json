@@ -1,0 +1,778 @@
+{
+  "suite": "study-assistant",
+  "version": 1,
+  "mode": "saved_summary",
+  "timestamp": "2026-11-24T21:29:07-05:00",
+  "model": "gpt-5-nano",
+  "dataset_sha256": "ae59992ffdc29773f309e5b7f96f1e9a018fa6bce029d7eebeffa4795dd348db",
+  "baseline_tutor_instructions_sha256": "54e444c42fcf153bc29e1277186bc3af5aee58f4bb566285ef39a7325c8cf076",
+  "summary_instructions_sha256": "008cf8fa3e507472134e16fcda283a43c991d5be27cdcf25b43b719a0ff2cc9b",
+  "settings": {
+    "max_output_tokens": 2000,
+    "model_timeout_seconds": 60.0,
+    "run_timeout_seconds": 180.0
+  },
+  "cases": [
+    {
+      "id": "same-chat-topic",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a beginner learning Python. I struggle with for loops over lists.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 325,
+                "output_tokens": 1217,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1088
+              },
+              "api_seconds": 7.0532
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 188,
+                "output_tokens": 966,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 896
+              },
+              "api_seconds": 5.806
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 13.3657,
+          "reply": "Nice to meet you! I know loops can be tricky when you\u2019re just starting.\n\nWhat would you like to focus on first?\n- Simple iteration: for item in my_list\n- Using indices: for i in range(len(my_list))\n- Getting both index and item: using enumerate\n- A tiny exercise right away (with one quick hint)\n\nTell me which option you prefer, or ask for a general beginner-friendly exercise and I\u2019ll tailor it.",
+          "summary_after": "Python beginner; topic focus: for loops over lists; reports difficulty with this topic."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "first",
+          "message": "Give me one practice exercise at my level.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 4,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 435,
+                "output_tokens": 1066,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 960
+              },
+              "api_seconds": 5.9796
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 200,
+                "output_tokens": 1063,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1024
+              },
+              "api_seconds": 5.4527
+            }
+          ],
+          "summary_before": "Python beginner; topic focus: for loops over lists; reports difficulty with this topic.",
+          "wall_seconds": 11.8594,
+          "reply": "Great, you\u2019re a beginner. Here\u2019s one beginner-friendly exercise focusing on for loops over lists.\n\nExercise:\n- Given a list of numbers named nums, use a for loop to print the square of each number.\n\nHint:\n- Think about what the loop variable represents on each pass and how to transform it to a square before printing.",
+          "summary_after": "Python beginner; topic focus: for loops over lists; reports difficulty with this topic; requests one practice exercise at their level."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Gave one beginner exercise about a for loop over a list."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "hints-first",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm a Python beginner. Please give me hints before showing solutions.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 324,
+                "output_tokens": 1399,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1280
+              },
+              "api_seconds": 8.9175
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 187,
+                "output_tokens": 881,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 832
+              },
+              "api_seconds": 4.2993
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 13.6033,
+          "reply": "Nice to meet you! I\u2019ll give you an exercise with a single short hint first, since you\u2019re a Python beginner.\n\nExercise:\nGiven a list of numbers, print the square of each number (one per line).\n\nHint:\nThink about what the loop variable represents on each pass through the list.\n\nWould you like the full Python solution now, or another hint?",
+          "summary_after": "Level: Python beginner. Preference: wants hints before solutions."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "first",
+          "message": "I'm trying to print each name in a list using a for loop. Can you help me get started?",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 4,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 428,
+                "output_tokens": 1156,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1024
+              },
+              "api_seconds": 6.4351
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 207,
+                "output_tokens": 1403,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1344
+              },
+              "api_seconds": 6.182
+            }
+          ],
+          "summary_before": "Level: Python beginner. Preference: wants hints before solutions.",
+          "wall_seconds": 13.0362,
+          "reply": "Nice. Here\u2019s a beginner-friendly starting point.\n\nExercise:\n- Given a list of names, use a for loop to print each name on its own line.\n\nHint:\n- Think about what the loop variable represents on each pass through the list.\n\nWould you like the full Python solution now, or another hint? If you have a sample list you\u2019re working with, share it and I\u2019ll tailor the exercise.",
+          "summary_after": "Level: Python beginner. Preference: wants hints before solutions. Topic: printing list elements with a for loop (printing each name in a list)."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Gave a conceptual hint without code, output, or a complete solution."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "latest-preference",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "For this exercise, give hints only. Use a for loop to print each number in [2, 4, 6] doubled.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 339,
+                "output_tokens": 771,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 704
+              },
+              "api_seconds": 3.8817
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 202,
+                "output_tokens": 1325,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1280
+              },
+              "api_seconds": 5.9416
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 10.2164,
+          "reply": "Hint: Use a for loop to take each number from the list, then print that number multiplied by 2.",
+          "summary_after": "Topic: Python for loops. Task: double each element of the list [2, 4, 6] and print the results. Preference: hints only for this exercise."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "first",
+          "message": "Actually, show me the full Python solution now.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 4,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 382,
+                "output_tokens": 597,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 512
+              },
+              "api_seconds": 3.5135
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 220,
+                "output_tokens": 1059,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 960
+              },
+              "api_seconds": 5.5381
+            }
+          ],
+          "summary_before": "Topic: Python for loops. Task: double each element of the list [2, 4, 6] and print the results. Preference: hints only for this exercise.",
+          "wall_seconds": 9.4688,
+          "reply": "Here's the Python solution:\n\nfor x in [2, 4, 6]:\n    print(x * 2)\n\nExplanation: The loop goes through each number in the list, x holds the current number, and print(x * 2) outputs double that number.",
+          "summary_after": "Topic: Python for loops. Task: double each element of the list [2, 4, 6] and print the results. Preference: full solution for this exercise."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Gave a valid loop and explained how it doubles each number."
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "id": "fresh-chat-recall",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "The exact Python topic I'm struggling with is nested for loops.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 323,
+                "output_tokens": 1377,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1216
+              },
+              "api_seconds": 8.1172
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 186,
+                "output_tokens": 990,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 960
+              },
+              "api_seconds": 4.2493
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 12.802,
+          "reply": "Nice, nested for loops are a common sticking point. I\u2019ll stick to hints first.\n\nExercise (focus on nesting): Use nested for loops to create a small grid task you can test in Python. For example, design a task where you iterate over two dimensions (rows and columns) and do something in each inner iteration, then move to the next line after finishing a row.\n\nHint: The outer loop controls the rows. The inner loop handles the columns in that row. Think about what you should do in each inner iteration and when you should start a new line after finishing a row.\n\nBefore we dive deeper, what\u2019s your current Python level, and would you like me to tailor hints to beginners or to someone who already knows loops but struggles with nesting?",
+          "summary_after": "Current focus: Python \u2014 nested for loops. The learner explicitly states they are struggling with this topic."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "second",
+          "message": "What exact Python topic did I say I was struggling with?",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "Current focus: Python \u2014 nested for loops. The learner explicitly states they are struggling with this topic.",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 346,
+                "output_tokens": 333,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 320
+              },
+              "api_seconds": 2.45
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 209,
+                "output_tokens": 1223,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1152
+              },
+              "api_seconds": 5.0833
+            }
+          ],
+          "summary_before": "Current focus: Python \u2014 nested for loops. The learner explicitly states they are struggling with this topic.",
+          "wall_seconds": 7.9531,
+          "reply": "Nested for loops in Python.",
+          "summary_after": "Current focus: Python \u2014 nested for loops. The learner explicitly states they are struggling with this topic."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Identified nested for loops from the saved summary in a new chat."
+        }
+      ],
+      "verdict": "PASS",
+      "cross_chat_recall": "correct"
+    },
+    {
+      "id": "updated-fact",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "My Python exam is on June 12, 2030.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 324,
+                "output_tokens": 1233,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1088
+              },
+              "api_seconds": 7.8994
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 187,
+                "output_tokens": 663,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 640
+              },
+              "api_seconds": 3.5412
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 11.9173,
+          "reply": "Nice\u2014having an exam date helps us plan.\n\nCould you share a bit to tailor the plan?\n- Your Python level (beginner, intermediate, advanced)\n- Topics you expect on the exam or want to review (e.g., variables, loops, functions, lists/dicts, file I/O, debugging)\n- Do you prefer hints-first, or wanting full solutions when you practice?\n\nIf you\u2019d like, I can set up a short, focused study plan (e.g., 2\u20133 weeks with brief daily exercises) and start with a quick diagnostic to gauge where you stand. Also I can give you one concise hint per exercise if you like.",
+          "summary_after": "Python exam scheduled for June 12, 2030."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "second",
+          "message": "My Python exam was moved from June 12, 2030 to June 19, 2030. June 19 is the correct date now.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "Python exam scheduled for June 12, 2030.",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 354,
+                "output_tokens": 1583,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1472
+              },
+              "api_seconds": 10.8334
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 217,
+                "output_tokens": 526,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 448
+              },
+              "api_seconds": 2.5769
+            }
+          ],
+          "summary_before": "Python exam scheduled for June 12, 2030.",
+          "wall_seconds": 13.8305,
+          "reply": "Got it \u2014 the exam date is now June 19, 2030. I\u2019ll treat that as the updated date moving forward.\n\nWant a quick warm-up exercise? I\u2019ll give you a short task with one hint.\n\nExercise: Write Python code that prints a greeting for each name in a list of names.\n\nHint: Think about what the loop variable represents on each pass through the list.",
+          "summary_after": "Python exam scheduled for June 19, 2030."
+        },
+        {
+          "turn": 3,
+          "learner": "maya",
+          "chat": "third",
+          "message": "What is my current Python exam date?",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "Python exam scheduled for June 19, 2030.",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 331,
+                "output_tokens": 492,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 448
+              },
+              "api_seconds": 3.7913
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 194,
+                "output_tokens": 670,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 640
+              },
+              "api_seconds": 3.133
+            }
+          ],
+          "summary_before": "Python exam scheduled for June 19, 2030.",
+          "wall_seconds": 7.3324,
+          "reply": "Your Python exam is scheduled for June 19, 2030. If you\u2019d like, I can help you make a quick study plan.",
+          "summary_after": "Python exam scheduled for June 19, 2030."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 3,
+          "verdict": "PASS",
+          "reason": "Recalled June 19, 2030 without presenting the old date as current."
+        }
+      ],
+      "verdict": "PASS",
+      "cross_chat_recall": "correct"
+    },
+    {
+      "id": "irrelevant-detail",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "My study group is called Blue Lantern and it meets at 7 p.m. on Thursdays.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 330,
+                "output_tokens": 1865,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1728
+              },
+              "api_seconds": 14.2499
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 193,
+                "output_tokens": 739,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 704
+              },
+              "api_seconds": 3.9623
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 18.6668,
+          "reply": "Nice detail about Blue Lantern meeting on Thursdays at 7 p.m.\n\nWould you like a quick Python exercise to practice with schedules? Here\u2019s a simple one:\n\nExercise:\n- Create a list of meetings for Blue Lantern (you can include the day and time for each).\n- Write a short program that goes through that list and prints a friendly sentence for each meeting (e.g., a sentence that names the group and the meeting day/time).\n\nHint:\nThink about what the loop variable represents on each pass through the list.",
+          "summary_after": "Study group: Blue Lantern. Meets Thursdays at 7 p.m."
+        },
+        {
+          "turn": 2,
+          "learner": "maya",
+          "chat": "second",
+          "message": "In one or two sentences, explain the difference between a Python list and a tuple.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "Study group: Blue Lantern. Meets Thursdays at 7 p.m.",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 342,
+                "output_tokens": 1150,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1088
+              },
+              "api_seconds": 6.2654
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 205,
+                "output_tokens": 1302,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 1216
+              },
+              "api_seconds": 5.65
+            }
+          ],
+          "summary_before": "Study group: Blue Lantern. Meets Thursdays at 7 p.m.",
+          "wall_seconds": 12.3544,
+          "reply": "Nice to know about your Blue Lantern study group. A Python list is mutable (you can change, add, or remove items), while a tuple is immutable (its items can\u2019t be changed after creation).",
+          "summary_after": "Study group: Blue Lantern. Meets Thursdays at 7 p.m. Topic: Difference between Python list and tuple."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "FAIL",
+          "reason": "Mentioned Blue Lantern, the unrelated study group from the saved summary."
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "id": "learner-isolation",
+      "attempt": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "learner": "maya",
+          "chat": "first",
+          "message": "My personal Python practice topic is list slicing. My study nickname is Copper Finch.",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 327,
+                "output_tokens": 778,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 704
+              },
+              "api_seconds": 4.2947
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 190,
+                "output_tokens": 623,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 576
+              },
+              "api_seconds": 3.1581
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 7.8691,
+          "reply": "Nice to meet you, Copper Finch. You\u2019re practicing list slicing in Python. What would you like to do next: a quick concept refresher, a practice exercise on slicing (with a short hint), or both?",
+          "summary_after": "Current focus: Python practice on list slicing. Nickname: Copper Finch."
+        },
+        {
+          "turn": 2,
+          "learner": "leo",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 2,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 322,
+                "output_tokens": 891,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 832
+              },
+              "api_seconds": 6.0913
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 185,
+                "output_tokens": 410,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 384
+              },
+              "api_seconds": 2.0917
+            }
+          ],
+          "summary_before": "",
+          "wall_seconds": 8.654,
+          "reply": "I don\u2019t have a saved learner summary here. What is your personal Python practice topic and your study nickname? If you\u2019d like, I can suggest options to choose from.",
+          "summary_after": ""
+        },
+        {
+          "turn": 3,
+          "learner": "maya",
+          "chat": "first",
+          "message": "What is my personal Python practice topic and study nickname?",
+          "calls": [
+            {
+              "purpose": "tutor_reply",
+              "request_model": "gpt-5-nano",
+              "history_messages": 4,
+              "summary_supplied": "",
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 392,
+                "output_tokens": 523,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 448
+              },
+              "api_seconds": 3.2125
+            },
+            {
+              "purpose": "summary_update",
+              "request_model": "gpt-5-nano",
+              "history_messages": 1,
+              "model": "gpt-5-nano-2025-08-07",
+              "response_status": "completed",
+              "usage": {
+                "input_tokens": 200,
+                "output_tokens": 825,
+                "cached_input_tokens": 0,
+                "reasoning_tokens": 768
+              },
+              "api_seconds": 3.6352
+            }
+          ],
+          "summary_before": "Current focus: Python practice on list slicing. Nickname: Copper Finch.",
+          "wall_seconds": 7.2722,
+          "reply": "Your personal Python practice topic is list slicing, and your study nickname is Copper Finch.\n\nWould you like a quick refresher on slicing or a practice exercise with a short hint?",
+          "summary_after": "Current focus: Python practice on list slicing. Nickname: Copper Finch."
+        }
+      ],
+      "checkpoints": [
+        {
+          "turn": 2,
+          "verdict": "PASS",
+          "reason": "Leo received an empty summary and the reply disclosed no do-not-share learner details."
+        },
+        {
+          "turn": 3,
+          "verdict": "PASS",
+          "reason": "Maya's original chat correctly identified list slicing and Copper Finch."
+        }
+      ],
+      "verdict": "PASS"
+    }
+  ]
+}

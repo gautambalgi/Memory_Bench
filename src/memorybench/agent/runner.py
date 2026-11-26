@@ -131,18 +131,20 @@ class AgentRunner:
                     output = {"ok": True, "result": result}
                     kind = "tool_result"
                 except BaseException as exc:
+                    # Filesystem errors can include the absolute workspace path.
+                    message = exc.strerror if isinstance(exc, OSError) else str(exc)
                     emit(
                         "tool_error",
                         step,
                         (perf_counter() - started) * 1000,
                         call_id=call.call_id,
                         name=call.name,
-                        error=str(exc) or "Tool interrupted or timed out.",
+                        error=message or "Tool interrupted or timed out.",
                         error_type=type(exc).__name__,
                     )
                     if not isinstance(exc, Exception):
                         raise
-                    output = {"ok": False, "error": str(exc) or "Tool timed out."}
+                    output = {"ok": False, "error": message or "Tool timed out."}
                     kind = None
                 if kind:
                     emit(
