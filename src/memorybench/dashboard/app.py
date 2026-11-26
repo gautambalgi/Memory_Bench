@@ -13,7 +13,7 @@ from pydantic import SecretStr, ValidationError
 from memorybench.agent.providers import create_provider
 from memorybench.agent.runner import AgentRunner
 from memorybench.config import Settings
-from memorybench.dashboard.compare import render_comparison
+from memorybench.dashboard.compare import render_comparison, render_scenario_explorer
 from memorybench.dashboard.study import render_study_assistant
 from memorybench.dashboard.style import CSS
 from memorybench.dashboard.text import display_text
@@ -163,7 +163,7 @@ def main(*, public_demo: bool = False):
         st.markdown('<div class="lab-mark">MB / 00</div>', unsafe_allow_html=True)
         st.title("MemoryBench")
         if public_demo:
-            view = st.radio("Views", ["Compare", "Guided demo"])
+            view = st.radio("Views", ["Try a memory scenario", "Compare", "Guided demo"])
         else:
             settings = sidebar_api_key(settings)
             view = st.radio("Views", ["Run dashboard", "Study Assistant", "Compare"])
@@ -172,6 +172,8 @@ def main(*, public_demo: bool = False):
         render_study_assistant(settings)
     elif view == "Compare":
         render_comparison()
+    elif view == "Try a memory scenario":
+        render_scenario_explorer()
     elif public_demo:
         if "public_demo_workspace" not in st.session_state:
             st.session_state["public_demo_workspace"] = TemporaryDirectory(prefix="memorybench-")

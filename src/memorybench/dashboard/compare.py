@@ -70,13 +70,13 @@ def metrics(attempts: list[dict]) -> dict:
     }
 
 
-def show_turn(mode: str, turn: dict) -> None:
+def show_turn(mode: str, turn: dict, *, expand_memory: bool = False) -> None:
     st.caption(f"{turn['learner'].title()} · Chat {turn['chat']}")
     if "reply" in turn:
         st.markdown(turn["reply"])
     if "error" in turn:
         st.error(turn["error"])
-    with st.expander("Memory supplied to the tutor"):
+    with st.expander("Memory supplied to the tutor", expanded=expand_memory):
         call = next((call for call in turn["calls"] if call.get("purpose") != "note_update"), {})
         if mode == "Session only":
             st.caption("This request used the current chat's messages.")
@@ -90,6 +90,63 @@ def show_turn(mode: str, turn: dict) -> None:
             else:
                 st.caption("No matching notes were supplied.")
     st.caption(f"{turn['wall_seconds']:.2f} s · {len(turn['calls'])} model calls")
+
+
+def render_scenario_explorer() -> None:
+    st.title("Try a memory scenario")
+    st.caption("Explore recorded tutor replies. Switching scenarios or modes makes no API calls.")
+    try:
+        scenarios, records, retry = load_comparison(Path.cwd())
+    except (OSError, ValueError, KeyError, TypeError):
+        st.error("Could not load the recorded scenarios.")
+        return
+
+    by_id = {case["id"]: case for case in scenarios}
+    case_id = st.selectbox(
+        "Scenario",
+        list(by_id),
+        index=list(by_id).index("updated-fact"),
+        format_func=lambda key: by_id[key]["title"],
+        key="explorer_scenario",
+    )
+    mode = st.radio("Memory mode", list(MODES), horizontal=True, key="explorer_mode")
+    case = by_id[case_id]
+    with st.expander("Read the scenario messages"):
+        for i, turn in enumerate(case["turns"], 1):
+            st.caption(f"Message {i} · {turn['learner'].title()} · Chat {turn['chat']}")
+            st.write(turn["message"])
+    scored_turns = [check["turn"] for check in case["checks"]]
+    turn_number = st.selectbox(
+        "Learner message",
+        range(1, len(case["turns"]) + 1),
+        index=scored_turns[-1] - 1,
+        format_func=lambda i: f"Message {i}" + (" · Scored" if i in scored_turns else ""),
+        key=f"explorer_turn_{case_id}",
+    )
+    attempt = records[mode][case_id]
+    if mode == "Retrieved notes" and case_id == retry["id"]:
+        attempt_label = st.radio("Recorded attempt", ["Completed retry", "First attempt"])
+        if attempt_label == "Completed retry":
+            attempt = retry
+
+    st.subheader("Learner message")
+    st.write(case["turns"][turn_number - 1]["message"])
+    st.subheader("Recorded tutor reply")
+    show_turn(mode, attempt["turns"][turn_number - 1], expand_memory=True)
+    outcome = verdict(mode, attempt, retry["id"])
+    st.subheader(f"Scenario result · {outcome.title()}")
+    if outcome == "BLOCKED":
+        st.write("The first setup reply was incomplete, so no practice topic was saved.")
+    elif turn_number not in scored_turns:
+        st.caption("This message sets up the scenario. Choose a scored message to see the finding.")
+    elif mode == "Retrieved notes":
+        if case_id == "learner-isolation" and turn_number == 2:
+            st.write("Leo received no notes or details from Maya's profile.")
+        else:
+            st.write(NOTES_FINDINGS[case_id])
+    else:
+        check = next(row for row in attempt["checkpoints"] if row["turn"] == turn_number)
+        st.write(check["reason"])
 
 
 def render_comparison() -> None:

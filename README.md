@@ -46,6 +46,6 @@ Runs and learner memory are stored locally in SQLite. Learner profiles are desig
 
 ## Next
 
-The public demo entry point is `streamlit_demo.py`. To deploy it on Streamlit Community Cloud, select this repository and entry point. The demo needs no API secrets. It opens **Compare** by default and keeps **Guided demo** runs within each visitor's session.
+The public demo entry point is `streamlit_demo.py`. It opens **Try a memory scenario**, where visitors can switch memory modes and inspect recorded replies without an API key. **Compare** shows the full results, and **Guided demo** runs the scripted agent example within each visitor's session.
 
 A repeatable runner for all three memory modes is planned.
