@@ -46,4 +46,6 @@ Runs and learner memory are stored locally in SQLite. Learner profiles are desig
 
 ## Next
 
-Prepare a public demo that lets visitors explore the saved comparisons and run the guided example. A repeatable runner for all three memory modes is also planned.
+The public demo entry point is `streamlit_demo.py`. To deploy it on Streamlit Community Cloud, select this repository and entry point. The demo needs no API secrets. It opens **Compare** by default and keeps **Guided demo** runs within each visitor's session.
+
+A repeatable runner for all three memory modes is planned.

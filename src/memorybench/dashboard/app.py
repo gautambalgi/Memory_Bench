@@ -3,6 +3,8 @@
 import asyncio
 import json
 import sqlite3
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import plotly.graph_objects as go
 import streamlit as st
@@ -147,24 +149,34 @@ def inspect_run(run: dict):
         st.json(run["config"])
 
 
-def main():
+def main(*, public_demo: bool = False):
     st.set_page_config(page_title="MemoryBench | Agent workbench", page_icon="◈", layout="wide")
     st.markdown(CSS, unsafe_allow_html=True)
     try:
-        settings = Settings()
+        settings = (
+            Settings(_env_file=None, provider="demo", api_key="") if public_demo else Settings()
+        )
     except ValidationError:
         st.error("Some settings are invalid. Check .env against the ranges in .env.example.")
         st.stop()
     with st.sidebar:
         st.markdown('<div class="lab-mark">MB / 00</div>', unsafe_allow_html=True)
         st.title("MemoryBench")
-        settings = sidebar_api_key(settings)
-        view = st.radio("Views", ["Run dashboard", "Study Assistant", "Compare"])
+        if public_demo:
+            view = st.radio("Views", ["Compare", "Guided demo"])
+        else:
+            settings = sidebar_api_key(settings)
+            view = st.radio("Views", ["Run dashboard", "Study Assistant", "Compare"])
         st.divider()
     if view == "Study Assistant":
         render_study_assistant(settings)
     elif view == "Compare":
         render_comparison()
+    elif public_demo:
+        if "public_demo_workspace" not in st.session_state:
+            st.session_state["public_demo_workspace"] = TemporaryDirectory(prefix="memorybench-")
+        data_dir = Path(st.session_state["public_demo_workspace"].name)
+        render_run_dashboard(settings.model_copy(update={"data_dir": data_dir}), public_demo=True)
     else:
         render_run_dashboard(settings)
 
@@ -193,7 +205,7 @@ def sidebar_api_key(settings: Settings) -> Settings:
     return settings
 
 
-def render_run_dashboard(settings: Settings):
+def render_run_dashboard(settings: Settings, *, public_demo: bool = False):
     try:
         store = RunStore(settings.data_dir, (settings.api_key.get_secret_value(),))
     except (OSError, sqlite3.Error):
@@ -201,10 +213,14 @@ def render_run_dashboard(settings: Settings):
         st.stop()
     with st.sidebar:
         st.markdown("**Your workbench**")
-        mode = st.radio(
-            "Execution mode",
-            ["Guided demo", "Live AI"],
-            index=0 if settings.provider == "demo" else 1,
+        mode = (
+            "Guided demo"
+            if public_demo
+            else st.radio(
+                "Execution mode",
+                ["Guided demo", "Live AI"],
+                index=0 if settings.provider == "demo" else 1,
+            )
         )
         if mode == "Guided demo":
             st.caption("A scripted sample with real tool execution. No API key needed.")
@@ -227,7 +243,10 @@ def render_run_dashboard(settings: Settings):
             index=options.index(active) if active in options else 0,
             format_func=lambda value: labels.get(value, value),
         )
-        st.caption("Saved locally. Each run starts with a fresh context.")
+        if public_demo:
+            st.caption("Runs are available only in this browser session.")
+        else:
+            st.caption("Saved locally. Each run starts with a fresh context.")
         st.divider()
         st.caption("VERSION 0 / OBSERVE FIRST")
         st.caption("Memory, benchmarks, and evaluation will build on this execution record.")
